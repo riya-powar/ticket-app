@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:ticket_app/routes/app_routes.dart';
 import 'package:ticket_app/base/res/media.dart';
 import 'package:ticket_app/base/res/styles/app_styles.dart';
+import 'package:ticket_app/base/utils/all_json.dart';
 import 'package:ticket_app/base/widgets/app_double_text.dart';
+import 'package:ticket_app/base/widgets/ticket_view.dart';
+import 'package:ticket_app/screens/widgets/hotel.dart';
+
 
 
 class HomeScreen extends StatelessWidget{
@@ -14,9 +19,11 @@ class HomeScreen extends StatelessWidget{
       children: [
         SizedBox(height: 50,),
         Container(
+
           //color: const Color.fromARGB(255, 155, 213, 239),
           padding: const EdgeInsets.symmetric(horizontal:30, vertical: 20),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween
@@ -63,7 +70,33 @@ class HomeScreen extends StatelessWidget{
           
             ),
             const SizedBox(height: 50,),
-            AppDoubleText(bigText: 'Upcoming Flights',smallText: 'view all',),
+            AppDoubleText(
+              bigText: 'Upcoming Flights',
+              smallText: 'view all',
+              func: ()=> Navigator.pushNamed(context, AppRoutes.allTickets)
+              ),
+            SizedBox(height: 25,),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(children: ticketList.take(2).map((singleTicket)=> TicketView(ticket:singleTicket),
+              ).toList(),
+              )
+              ),
+            SizedBox(height: 40,),
+
+            AppDoubleText(
+              bigText: 'Hotels',
+              smallText: 'view all',
+              func: ()=> Navigator.pushNamed(context, AppRoutes.allTickets)
+              ),
+            SizedBox(height: 30,),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(children: hotelList.take(2).map((singleHotel)=> Hotel(hotel:singleHotel),
+              ).toList(),
+              )
+            )
+
             ],
         )
         
@@ -75,3 +108,7 @@ class HomeScreen extends StatelessWidget{
   );
  }
 }
+
+
+
+
