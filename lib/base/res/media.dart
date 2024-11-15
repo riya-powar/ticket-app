@@ -6,6 +6,7 @@ class AppMedia{
   static const cityView='$_baseImage/city_view.jpg';
   static const hotelRoom='$_baseImage/hotel_room.jpg';
   static const planeSeat='$_baseImage/plane_seat.jpg';
-  static const poolView='$_baseImage/pool_view.avif';
+  static const poolView='$_baseImage/pool_view.jpg';
   static const visaCard='$_baseImage/visa_card.png';
+  static const emoji='$_baseImage/emoji.png';
 }

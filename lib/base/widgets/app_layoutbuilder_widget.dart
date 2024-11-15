@@ -4,7 +4,8 @@ import 'package:flutter/cupertino.dart';
 class AppLayoutBuilderWidget extends StatelessWidget {
   final int randomDivider;
   final double width;
-  const AppLayoutBuilderWidget({super.key, required this.randomDivider, this.width=3});
+  final bool? isColor;
+  const AppLayoutBuilderWidget({super.key, required this.randomDivider, this.width=3, this.isColor});
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +16,9 @@ class AppLayoutBuilderWidget extends StatelessWidget {
         children: List.generate((constraints.constrainWidth()/randomDivider).floor(), (index)=> SizedBox(
           width: width,
           height: 1,
-          child:const DecoratedBox(
+          child: DecoratedBox(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: isColor==null?Colors.white: Color(0xFF8ACCF7),
             ),
           ),
         )),
